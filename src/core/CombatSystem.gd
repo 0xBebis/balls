@@ -52,15 +52,22 @@ func process_hit(hit_event: HitEvent) -> bool:
 	if hit_event.defender.has_method("record_damage_taken"):
 		hit_event.defender.record_damage_taken(damage)
 
+	# Spawn visual effects
+	_spawn_hit_effects(hit_event, damage)
+
 	hit_confirmed.emit(hit_event)
 	ball_damaged.emit(hit_event.defender, damage, hit_event)
 
 	if hit_event.defender.hp <= 0:
 		if hit_event.attacker.has_method("record_kill"):
 			hit_event.attacker.record_kill()
-		_handle_death(hit_event.defender)
+		_handle_death(hit_event.defender, hit_event.attacker)
 
 	return true
+
+func _spawn_hit_effects(_hit_event: HitEvent, _damage: float) -> void:
+	# Effects disabled for debugging
+	pass
 
 func _validate_hit(hit_event: HitEvent) -> bool:
 	if not is_instance_valid(hit_event.attacker) or not is_instance_valid(hit_event.defender):
@@ -108,7 +115,7 @@ func _apply_knockback(hit_event: HitEvent, damage: float) -> void:
 		var impulse: Vector2 = hit_event.hit_normal * (hit_event.knockback * damage)
 		hit_event.defender.apply_central_impulse(impulse)
 
-func _handle_death(ball: Node2D) -> void:
+func _handle_death(ball: Node2D, _killer: Node2D = null) -> void:
 	ball.die()
 	ball_died.emit(ball)
 

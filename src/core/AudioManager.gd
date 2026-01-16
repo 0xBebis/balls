@@ -1,4 +1,3 @@
-class_name AudioManager
 extends Node
 
 ## Audio manager for game sounds.

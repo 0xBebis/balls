@@ -14,6 +14,11 @@ config/name="Weapon Ball Clone"
 run/main_scene="res://scenes/game/Game.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
+[autoload]
+
+Audio="*res://src/core/AudioManager.gd"
+Effects="*res://src/core/GameEffects.gd"
+
 [display]
 
 window/size/viewport_width=1280
@@ -27,10 +32,6 @@ window/stretch/mode="canvas_items"
 2d_physics/layer_2="Balls"
 2d_physics/layer_3="Weapons"
 2d_physics/layer_4="Projectiles"
-
-[autoload]
-
-Audio="*res://src/core/AudioManager.gd"
 
 [physics]
 

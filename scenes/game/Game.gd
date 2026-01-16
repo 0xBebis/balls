@@ -30,16 +30,20 @@ func _setup_systems() -> void:
 	simulation.match_system.ball_eliminated.connect(_on_ball_eliminated)
 
 func _setup_arena() -> void:
+	# Create game container that can be shaken
+	var game_container: Node2D = Node2D.new()
+	game_container.name = "GameContainer"
+	add_child(game_container)
+
 	arena = ArenaScene.instantiate()
 	# Offset arena so walls (which extend into negative space) are visible
-	arena.position = Vector2(25, 20)
-	add_child(arena)
+	arena.position = Vector2.ZERO
+	game_container.add_child(arena)
 
 	ball_container = Node2D.new()
 	ball_container.name = "Balls"
-	# Ball container needs same offset as arena
-	ball_container.position = Vector2(25, 20)
-	add_child(ball_container)
+	ball_container.position = Vector2.ZERO
+	game_container.add_child(ball_container)
 
 func _setup_ui() -> void:
 	var canvas_layer: CanvasLayer = CanvasLayer.new()

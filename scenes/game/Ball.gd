@@ -151,14 +151,25 @@ func _on_ai_dashed(direction: Vector2) -> void:
 	dash_direction = direction
 
 func _on_body_entered(body: Node) -> void:
-	# Play thud sound when balls collide with each other
-	if body is Ball and body != self and _alive:
+	if not _alive:
+		return
+
+	# Ball vs Ball collision
+	if body is Ball and body != self:
 		if ball_collision_cooldown <= 0:
-			# Calculate intensity based on relative velocity
-			var relative_velocity: float = (linear_velocity - body.linear_velocity).length()
+			var other_velocity: Vector2 = body.linear_velocity if body is RigidBody2D else Vector2.ZERO
+			var relative_velocity: float = (linear_velocity - other_velocity).length()
 			var intensity: float = clampf(relative_velocity / 400.0, 0.5, 1.2)
 			Audio.play_ball_collision(intensity)
 			ball_collision_cooldown = BALL_COLLISION_SOUND_COOLDOWN
+
+	# Ball vs Wall collision
+	elif body is StaticBody2D and ball_collision_cooldown <= 0:
+		var speed: float = linear_velocity.length()
+		var intensity: float = clampf(speed / 350.0, 0.3, 1.0)
+		if intensity > 0.5:
+			Audio.play_ball_collision(intensity * 0.6)
+			ball_collision_cooldown = BALL_COLLISION_SOUND_COOLDOWN * 0.5
 
 func record_damage_dealt(amount: float) -> void:
 	stats_damage_dealt += amount

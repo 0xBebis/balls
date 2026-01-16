@@ -362,6 +362,7 @@ func _on_boost_pad_entered(body: Node2D, direction: Vector2, strength: float) ->
 	if body is RigidBody2D:
 		body.apply_central_impulse(direction * strength)
 		boost_pad_triggered.emit(body, direction, strength)
+		Audio.play_weapon_hit_ball(0.6)
 
 func _add_danger_zone(pos: Vector2, radius: float, dps: float) -> void:
 	var area: Area2D = Area2D.new()

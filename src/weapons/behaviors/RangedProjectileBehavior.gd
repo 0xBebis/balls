@@ -154,6 +154,11 @@ func _return_to_pool(proj: Node2D) -> void:
 func _on_projectile_hit(body: Node2D, proj: Node2D) -> void:
 	var proj_owner: Node2D = proj.get_meta("owner_ball")
 
+	# Safety check
+	if not is_instance_valid(proj_owner):
+		_return_to_pool(proj)
+		return
+
 	if body == proj_owner:
 		return
 
@@ -196,6 +201,10 @@ func _on_projectile_weapon_hit(weapon_area: Area2D, proj: Node2D) -> void:
 	var weapon_owner: Node2D = weapon_area.get_meta("owner_ball")
 	var proj_owner: Node2D = proj.get_meta("owner_ball")
 
+	# Safety checks
+	if not is_instance_valid(proj_owner) or not is_instance_valid(weapon_owner):
+		return
+
 	# Don't collide with own weapons
 	if weapon_owner == proj_owner:
 		return
@@ -213,7 +222,7 @@ func _on_projectile_weapon_hit(weapon_area: Area2D, proj: Node2D) -> void:
 	proj.set_meta("velocity", reflected_vel)
 	proj.rotation = reflected_vel.angle()
 
-	# Play deflection sound (clack)
+	# Play deflection sound
 	Audio.play_weapon_clash(0.7)
 
 	# Apply small knockback to the weapon owner

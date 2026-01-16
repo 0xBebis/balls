@@ -128,6 +128,9 @@ func _draw() -> void:
 
 func _on_body_entered(body: Node2D, my_hitbox: Area2D) -> void:
 	# This handles weapon hitting a ball directly
+	if not is_instance_valid(owner_ball) or not owner_ball.is_alive():
+		return
+
 	if body == owner_ball:
 		return
 
