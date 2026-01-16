@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BallDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/core/BallDefinition.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = "spear_bronze"
+display_name = "Lancer"
+radius = 28.0
+mass = 1.1
+max_speed = 360.0
+linear_damp = 0.25
+angular_damp = 0.2
+friction = 0.45
+bounce = 0.75
+base_hp = 110.0
+weapon_id = "spear"
+team = -1
+color = Color(0.85, 0.6, 0.3, 1)

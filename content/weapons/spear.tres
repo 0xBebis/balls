@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="WeaponDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/core/WeaponDefinition.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = "spear"
+display_name = "Spear"
+type = 1
+base_damage = 5.0
+knockback = 1.2
+hit_cooldown = 0.15
+rotation_speed = 5.0
+reach = 65.0
+hitbox_size = 12.0
+fire_cooldown = 0.7
+fire_range = 520.0
+arrow_count = 1
+projectile_speed = 820.0
+projectile_lifetime = 2.2
+projectile_radius = 6.0
+pierce = 0
+applies_poison = false
+poison_stacks = 1
+poison_power = 1.0
+damage_add_per_hit = 0.5
+rotation_speed_add_per_hit = 0.0
+reach_add_per_hit = 4.0
+arrow_count_add_per_hit = 0
+poison_power_add_per_hit = 0.0
+max_speed_add_per_hit = 0.0
+color = Color(0.9, 0.7, 0.4, 1)

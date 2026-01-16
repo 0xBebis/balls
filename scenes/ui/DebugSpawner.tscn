@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://debugspawner123"]
+
+[ext_resource type="Script" path="res://scenes/ui/DebugSpawner.gd" id="1_script"]
+
+[node name="DebugSpawner" type="Control"]
+script = ExtResource("1_script")

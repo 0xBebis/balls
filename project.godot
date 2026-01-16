@@ -1,0 +1,34 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Weapon Ball Clone"
+run/main_scene="res://scenes/game/Game.tscn"
+config/features=PackedStringArray("4.5", "Forward Plus")
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/resizable=false
+window/stretch/mode="canvas_items"
+
+[layer_names]
+
+2d_physics/layer_1="Walls"
+2d_physics/layer_2="Balls"
+2d_physics/layer_3="Weapons"
+2d_physics/layer_4="Projectiles"
+
+[physics]
+
+2d/default_gravity=0
+2d/default_linear_damp=0.2

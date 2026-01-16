@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BallDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/core/BallDefinition.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = "scythe_purple"
+display_name = "Reaper"
+radius = 30.0
+mass = 1.2
+max_speed = 340.0
+linear_damp = 0.25
+angular_damp = 0.25
+friction = 0.4
+bounce = 0.75
+base_hp = 95.0
+weapon_id = "scythe"
+team = -1
+color = Color(0.6, 0.25, 0.75, 1)

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="WeaponDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/core/WeaponDefinition.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = "bow"
+display_name = "Bow"
+type = 2
+base_damage = 3.0
+knockback = 0.6
+hit_cooldown = 0.1
+rotation_speed = 0.0
+reach = 0.0
+hitbox_size = 8.0
+fire_cooldown = 0.6
+fire_range = 550.0
+arrow_count = 1
+projectile_speed = 850.0
+projectile_lifetime = 2.2
+projectile_radius = 8.0
+pierce = 0
+applies_poison = false
+poison_stacks = 1
+poison_power = 1.0
+damage_add_per_hit = 0.0
+rotation_speed_add_per_hit = 0.0
+reach_add_per_hit = 0.0
+arrow_count_add_per_hit = 1
+poison_power_add_per_hit = 0.0
+max_speed_add_per_hit = 0.0
+color = Color(1.0, 0.8, 0.3, 1)

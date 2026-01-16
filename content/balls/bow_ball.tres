@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BallDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/core/BallDefinition.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = "bow_amber"
+display_name = "Archer"
+radius = 26.0
+mass = 0.9
+max_speed = 400.0
+linear_damp = 0.2
+angular_damp = 0.2
+friction = 0.35
+bounce = 2.5
+base_hp = 50
+weapon_id = "bow"
+team = -1
+color = Color(0.95, 0.7, 0.2, 1)

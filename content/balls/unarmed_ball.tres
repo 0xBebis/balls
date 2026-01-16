@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BallDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/core/BallDefinition.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = "unarmed_blue"
+display_name = "Brawler"
+radius = 28.0
+mass = 1.0
+max_speed = 420.0
+linear_damp = 0.2
+angular_damp = 0.2
+friction = 0.4
+bounce = 0.8
+base_hp = 100.0
+weapon_id = "unarmed"
+team = -1
+color = Color(0.25, 0.55, 0.95, 1)

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BallDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/core/BallDefinition.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = "sword_silver"
+display_name = "Knight"
+radius = 28.0
+mass = 1.0
+max_speed = 380.0
+linear_damp = 0.2
+angular_damp = 0.2
+friction = 0.4
+bounce = 0.8
+base_hp = 100.0
+weapon_id = "sword"
+team = -1
+color = Color(0.7, 0.75, 0.85, 1)

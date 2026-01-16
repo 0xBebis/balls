@@ -1,0 +1,17 @@
+res://src/ai/SimpleAIController.gd
+res://scenes/ui/DebugSpawner.gd
+res://scenes/game/Arena.gd
+res://scenes/game/Ball.gd
+res://scenes/game/Game.gd
+res://src/core/CombatSystem.gd
+res://src/core/HitEvent.gd
+res://src/core/MatchSystem.gd
+res://src/core/Simulation.gd
+res://src/core/StatusSystem.gd
+res://src/weapons/behaviors/OrbitMeleeBehavior.gd
+res://src/weapons/behaviors/RangedProjectileBehavior.gd
+res://src/weapons/behaviors/UnarmedBehavior.gd
+res://scenes/game/Arena.tscn
+res://scenes/ui/DebugSpawner.tscn
+res://src/core/WeaponDefinition.gd
+res://src/weapons/WeaponBehavior.gd
