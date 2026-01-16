@@ -9,10 +9,10 @@ var hitboxes: Array[Area2D] = []
 var orbit_angle: float = 0.0
 var weapon_count: int = 1
 
-const WEAPON_VS_WEAPON_DAMAGE_MULT: float = 0.15  # 15% damage for weapon clashes
-const WEAPON_VS_BALL_BOUNCE_FORCE: float = 700.0  # Force when weapon hits a ball
-const WEAPON_VS_WEAPON_BOUNCE_FORCE: float = 600.0  # Force when weapons clash
-const BOUNCE_COOLDOWN: float = 0.1  # Minimum time between bounce impulses
+const WEAPON_VS_WEAPON_DAMAGE_MULT: float = 0.12  # 12% damage for weapon clashes
+const WEAPON_VS_BALL_BOUNCE_FORCE: float = 800.0  # Force when weapon hits a ball
+const WEAPON_VS_WEAPON_BOUNCE_FORCE: float = 650.0  # Force when weapons clash
+const BOUNCE_COOLDOWN: float = 0.07  # Cooldown for bounces
 
 # Track recent bounces to prevent spam
 var bounce_cooldowns: Dictionary = {}
