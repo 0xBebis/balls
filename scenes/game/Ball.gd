@@ -40,6 +40,10 @@ var dash_direction: Vector2 = Vector2.ZERO
 var death_animation_timer: float = 0.0
 var death_particles: Array[Dictionary] = []
 
+# Ball collision sound tracking
+var ball_collision_cooldown: float = 0.0
+const BALL_COLLISION_SOUND_COOLDOWN: float = 0.1
+
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var weapon_mount: Node2D = $WeaponMount
@@ -81,6 +85,11 @@ func initialize(
 	ball_color = def.color
 	queue_redraw()
 
+	# Enable ball collision detection for sound effects
+	contact_monitor = true
+	max_contacts_reported = 4
+	body_entered.connect(_on_body_entered)
+
 	# Register with combat system
 	combat_system.register_ball(self)
 
@@ -101,6 +110,7 @@ func _process(delta: float) -> void:
 	# Update timers
 	damage_flash_timer = maxf(0.0, damage_flash_timer - delta)
 	dash_effect_timer = maxf(0.0, dash_effect_timer - delta)
+	ball_collision_cooldown = maxf(0.0, ball_collision_cooldown - delta)
 
 	if _alive:
 		stats_time_alive += delta
@@ -140,6 +150,16 @@ func _on_ai_dashed(direction: Vector2) -> void:
 	dash_effect_timer = 0.3
 	dash_direction = direction
 
+func _on_body_entered(body: Node) -> void:
+	# Play thud sound when balls collide with each other
+	if body is Ball and body != self and _alive:
+		if ball_collision_cooldown <= 0:
+			# Calculate intensity based on relative velocity
+			var relative_velocity: float = (linear_velocity - body.linear_velocity).length()
+			var intensity: float = clampf(relative_velocity / 400.0, 0.5, 1.2)
+			Audio.play_ball_collision(intensity)
+			ball_collision_cooldown = BALL_COLLISION_SOUND_COOLDOWN
+
 func record_damage_dealt(amount: float) -> void:
 	stats_damage_dealt += amount
 	stats_hits_landed += 1
@@ -177,6 +197,9 @@ func die() -> void:
 
 	_alive = false
 	died.emit()
+
+	# Play death sound
+	Audio.play_ball_death()
 
 	# Disable physics and collision
 	set_physics_process(false)

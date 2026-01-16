@@ -15,3 +15,4 @@ res://scenes/game/Arena.tscn
 res://scenes/ui/DebugSpawner.tscn
 res://src/core/WeaponDefinition.gd
 res://src/weapons/WeaponBehavior.gd
+res://src/core/AudioManager.gd

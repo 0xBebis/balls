@@ -149,6 +149,9 @@ func _on_body_entered(body: Node2D, my_hitbox: Area2D) -> void:
 
 		_apply_bounce_cooldown(my_hitbox, body)
 
+		# Play weapon hitting ball sound
+		Audio.play_weapon_hit_ball(1.0)
+
 	# Apply damage
 	var tags: Array[String] = ["melee"]
 	if definition.applies_poison:
@@ -205,6 +208,9 @@ func _on_area_entered(other_area: Area2D, my_hitbox: Area2D) -> void:
 			other_owner.apply_central_impulse(push_dir * WEAPON_VS_WEAPON_BOUNCE_FORCE)
 
 		_apply_bounce_cooldown(my_hitbox, other_area)
+
+		# Play weapon clash sound
+		Audio.play_weapon_clash(1.0)
 
 	# Only process damage once (the ball with lower instance ID processes it)
 	if owner_ball.get_instance_id() > other_owner.get_instance_id():

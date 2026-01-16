@@ -182,6 +182,9 @@ func _on_projectile_hit(body: Node2D, proj: Node2D) -> void:
 		)
 		on_hit(hit_event)
 
+		# Play projectile hit sound
+		Audio.play_weapon_hit_ball(0.8)
+
 		if definition.pierce <= 0:
 			_return_to_pool(proj)
 
@@ -209,6 +212,9 @@ func _on_projectile_weapon_hit(weapon_area: Area2D, proj: Node2D) -> void:
 	var reflected_vel: Vector2 = vel.bounce(to_weapon)
 	proj.set_meta("velocity", reflected_vel)
 	proj.rotation = reflected_vel.angle()
+
+	# Play deflection sound (clack)
+	Audio.play_weapon_clash(0.7)
 
 	# Apply small knockback to the weapon owner
 	if weapon_owner is RigidBody2D:
